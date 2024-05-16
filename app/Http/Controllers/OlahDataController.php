@@ -28,10 +28,12 @@ class OlahDataController extends Controller
     public function getTotalSales(Request $request)
     {
         $totalSales = Data::sum('Sales');
+        $formattedSales = number_format($totalSales, 2);
+
 
         return response()->json([
             'success' => true,
-            'total_sales' => $totalSales,
+            'total_sales' => $formattedSales,
         ]);
     }
 
@@ -50,10 +52,11 @@ class OlahDataController extends Controller
     public function getTotalProfit(Request $request)
     {
         $totalProfit = Data::sum('Profit');
+        $formattedProfit = number_format($totalProfit, 2);
 
         return response()->json([
             'success' => true,
-            'total_profit' => $totalProfit,
+            'total_profit' => $formattedProfit,
         ]);
     }
 
